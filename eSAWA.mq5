@@ -16,7 +16,9 @@
 
 // Includes.
 #include <EA31337-classes/Chart.mqh>
+#include <EA31337-classes/Indicators/Indi_ATR.mqh>
 #include <EA31337-classes/Indicators/Indi_CCI.mqh>
+#include <EA31337-classes/Indicators/Indi_MA.mqh>
 #include <EA31337-classes/Indicators/Indi_RSI.mqh>
 
 //---- input parameters
@@ -179,7 +181,7 @@ void DrawAr(string ssName, int i) {
   string sName = sPrefix + " " + ssName + " " + TimeToStr(Time[i], TIME_DATE | TIME_MINUTES);
   ObjectDelete(sName);
   ObjectCreate(sName, OBJ_ARROW, 0, Time[i], 0);
-  double gap = 3.0 * iATR(NULL, 0, 20, i) / 4.0;
+  double gap = 3.0 * iATR4(NULL, 0, 20, i) / 4.0;
   if (ssName == "up") {
     ObjectSet(sName, OBJPROP_ARROWCODE, 225);
     ObjectSet(sName, OBJPROP_PRICE1, Low[i] - gap);
