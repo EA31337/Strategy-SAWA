@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 #property copyright "Copyright © 2016 | eSAWA.com"
 #property link      " http://fx.essawa.com"
-#property version   "1.2.0"
+#property version   "1.002"
 
 #property indicator_separate_window
 #property indicator_buffers 2
