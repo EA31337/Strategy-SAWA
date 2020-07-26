@@ -49,7 +49,7 @@ string sPrefix;
 int init() {
   //---- indicators
 #ifdef __MQL4__
-  IndicatorBuffers(indicator_plots);
+  IndicatorBuffers(2);
 #endif
   SetIndexStyle4(0, DRAW_LINE, 0, 2);
   SetIndexBuffer(0, ExtMapBuffer1);
@@ -78,9 +78,9 @@ int deinit() {
 //| Custom indicator iteration function                              |
 //+------------------------------------------------------------------+
 int OnCalculate(const int rates_total, const int prev_calculated, const int begin, const double &price[]) {
-  int limit = rates_total - prev_calculated;
+  int i, limit = rates_total - prev_calculated;
 
-  for (int i = limit - 3; i >= 0; i--) {
+  for (i = limit - 3; i >= 0; i--) {
     a = iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i);
     if (i - 1 >= 0)
       a1 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 1) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 1));
@@ -163,11 +163,11 @@ int OnCalculate(const int rates_total, const int prev_calculated, const int begi
     ExtMapBuffer4[i] = tt2min;
   }
 
-  for (int i = 0; i < limit; i++) {
-    ExtMapBuffer1[i] = iMAOnArray(ExtMapBuffer3, rates_total, Ma_Period, 0, MODE_SMA, i);
-    ExtMapBuffer2[i] = iMAOnArray(ExtMapBuffer4, rates_total, Ma_Period, 0, MODE_SMA, i);
+  for (i = 0; i < limit; i++) {
+    ExtMapBuffer1[i] = iMAOnArray4(ExtMapBuffer3, rates_total, Ma_Period, 0, MODE_SMA, i);
+    ExtMapBuffer2[i] = iMAOnArray4(ExtMapBuffer4, rates_total, Ma_Period, 0, MODE_SMA, i);
   }
-  for (int i = 0; i < limit - 1; i++) {
+  for (i = 0; i < limit - 1; i++) {
     if (arrows) {
       if (ExtMapBuffer1[i] >= ExtMapBuffer2[i] && ExtMapBuffer1[i + 1] < ExtMapBuffer2[i + 1]) {
         DrawAr("up", i);
