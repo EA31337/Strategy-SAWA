@@ -3,7 +3,7 @@
 //|                                                         indicator|
 //|                                              http://fx.essawa.com|
 //+------------------------------------------------------------------+
-#property copyright "Copyright © 2016 | eSAWA.com"
+#property copyright "Copyright Â© 2016 | eSAWA.com"
 #property link " http://fx.essawa.com"
 #property version "1.002"
 
@@ -34,7 +34,15 @@ string sPrefix;
 //+------------------------------------------------------------------+
 //| Custom indicator initialization function                         |
 //+------------------------------------------------------------------+
-int init() {
+#ifdef __MQL4__
+int init()
+#else
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const int begin,
+                const double &price[])
+#endif
+  {
   //---- indicators
   IndicatorBuffers(4);
   SetIndexStyle(0, DRAW_LINE, 0, 2);
