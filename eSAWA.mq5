@@ -13,8 +13,13 @@
 #property indicator_color2 Red
 #property indicator_width1 2
 #property indicator_width2 2
-//---- input parameters
 
+// Includes.
+#include <EA31337-classes/Chart.mqh>
+#include <EA31337-classes/Indicators/Indi_CCI.mqh>
+#include <EA31337-classes/Indicators/Indi_RSI.mqh>
+
+//---- input parameters
 extern int CCI_per = 14;
 extern int RSI_per = 14;
 extern int Ma_Period = 2;
@@ -44,8 +49,8 @@ int OnCalculate(const int rates_total,
 #endif
   {
   //---- indicators
-  IndicatorBuffers(4);
-  SetIndexStyle(0, DRAW_LINE, 0, 2);
+  //IndicatorBuffers(4);
+  //SetIndexStyle(0, DRAW_LINE, 0, 2);
   SetIndexBuffer(0, ExtMapBuffer1);
   SetIndexStyle(1, DRAW_LINE, 0, 2);
   SetIndexBuffer(1, ExtMapBuffer2);
@@ -75,25 +80,25 @@ int start() {
   int limit = Bars - IndicatorCounted();
 
   for (int i = limit - 3; i >= 0; i--) {
-    a = iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i);
-    if (i - 1 >= 0) a1 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 1) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 1));
-    if (i - 2 >= 0) a2 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 2) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 2));
-    if (i - 3 >= 0) a3 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 3) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 3));
-    if (i - 4 >= 0) a4 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 4) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 4));
-    if (i - 5 >= 0) a5 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 5) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 5));
-    if (i - 6 >= 0) a6 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 6) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 6));
-    if (i - 7 >= 0) a7 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 7) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 7));
-    if (i - 8 >= 0) a8 = (iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i - 8) - iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i + 8));
+    a = iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i);
+    if (i - 1 >= 0) a1 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 1) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 1));
+    if (i - 2 >= 0) a2 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 2) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 2));
+    if (i - 3 >= 0) a3 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 3) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 3));
+    if (i - 4 >= 0) a4 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 4) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 4));
+    if (i - 5 >= 0) a5 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 5) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 5));
+    if (i - 6 >= 0) a6 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 6) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 6));
+    if (i - 7 >= 0) a7 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 7) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 7));
+    if (i - 8 >= 0) a8 = (iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i - 8) - iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i + 8));
 
-    b = iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i);
-    if (i - 1 >= 0) b1 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 1) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 1));
-    if (i - 2 >= 0) b2 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 2) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 2));
-    if (i - 3 >= 0) b3 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 3) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 3));
-    if (i - 4 >= 0) b4 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 4) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 4));
-    if (i - 5 >= 0) b5 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 5) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 5));
-    if (i - 6 >= 0) b6 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 6) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 6));
-    if (i - 7 >= 0) b7 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 7) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 7));
-    if (i - 8 >= 0) b8 = (iRSI(NULL, 0, RSI_per, PRICE_TYPICAL, i - 8) - iCCI(NULL, 0, CCI_per, PRICE_TYPICAL, i + 8));
+    b = iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i);
+    if (i - 1 >= 0) b1 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 1) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 1));
+    if (i - 2 >= 0) b2 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 2) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 2));
+    if (i - 3 >= 0) b3 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 3) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 3));
+    if (i - 4 >= 0) b4 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 4) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 4));
+    if (i - 5 >= 0) b5 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 5) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 5));
+    if (i - 6 >= 0) b6 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 6) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 6));
+    if (i - 7 >= 0) b7 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 7) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 7));
+    if (i - 8 >= 0) b8 = (iRSI4(NULL, 0, RSI_per, PRICE_TYPICAL, i - 8) - iCCI4(NULL, 0, CCI_per, PRICE_TYPICAL, i + 8));
 
     switch (koef) {
       case 0:
