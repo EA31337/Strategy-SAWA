@@ -29,6 +29,13 @@ jobs:
           include: .
           mt-version: 5.0.0.2361
           verbose: true
+      - name: Compile for MQL5
+        uses: fx31337/mql-compile-action@master
+        with:
+          path: eSAWA.mq5
+          include: .
+          mt-version: 5.0.0.2540
+          verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - name: Upload artifacts
