@@ -8,7 +8,7 @@
 #property version "1.002"
 
 #property indicator_separate_window
-#property indicator_buffers 2
+#property indicator_buffers 4
 #property indicator_plots 2
 #property indicator_color1 DeepSkyBlue
 #property indicator_color2 Red
@@ -48,9 +48,6 @@ string sPrefix;
 //+------------------------------------------------------------------+
 int init() {
   //---- indicators
-#ifdef __MQL4__
-  IndicatorBuffers(2);
-#endif
   SetIndexStyle4(0, DRAW_LINE, 0, 2);
   SetIndexBuffer(0, ExtMapBuffer1);
   SetIndexStyle4(1, DRAW_LINE, 0, 2);
