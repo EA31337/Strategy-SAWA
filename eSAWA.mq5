@@ -48,9 +48,12 @@ string sPrefix;
 //+------------------------------------------------------------------+
 int init() {
   //---- indicators
-  SetIndexStyle4(0, DRAW_LINE, 0, 2);
+#ifdef __MQL4__
+  IndicatorBuffers(4);
+#endif
+  SetIndexStyle(0, DRAW_LINE, 0, 2);
   SetIndexBuffer(0, ExtMapBuffer1);
-  SetIndexStyle4(1, DRAW_LINE, 0, 2);
+  SetIndexStyle(1, DRAW_LINE, 0, 2);
   SetIndexBuffer(1, ExtMapBuffer2);
 
   SetIndexBuffer(2, ExtMapBuffer3);
@@ -64,6 +67,7 @@ int init() {
   //----
   return (0);
 }
+
 //+------------------------------------------------------------------+
 //| Custor indicator deinitialization function                       |
 //+------------------------------------------------------------------+
@@ -74,7 +78,9 @@ int deinit() {
 //+------------------------------------------------------------------+
 //| Custom indicator iteration function                              |
 //+------------------------------------------------------------------+
-int OnCalculate(const int rates_total, const int prev_calculated, const int begin, const double &price[]) {
+int OnCalculate(const int rates_total, const int prev_calculated, const datetime &time[], const double &open[],
+                const double &high[], const double &low[], const double &close[], const long &tick_volume[],
+                const long &volume[], const int &spread[]) {
   int i, limit = rates_total - prev_calculated;
 
   for (i = limit - 3; i >= 0; i--) {
