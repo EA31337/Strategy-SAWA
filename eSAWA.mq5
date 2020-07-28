@@ -51,9 +51,9 @@ int init() {
 #ifdef __MQL4__
   IndicatorBuffers(4);
 #endif
-  SetIndexStyle(0, DRAW_LINE, 0, 2);
+  SetIndexStyle4(0, DRAW_LINE, 0, 2);
   SetIndexBuffer(0, ExtMapBuffer1);
-  SetIndexStyle(1, DRAW_LINE, 0, 2);
+  SetIndexStyle4(1, DRAW_LINE, 0, 2);
   SetIndexBuffer(1, ExtMapBuffer2);
 
   SetIndexBuffer(2, ExtMapBuffer3);
@@ -78,9 +78,24 @@ int deinit() {
 //+------------------------------------------------------------------+
 //| Custom indicator iteration function                              |
 //+------------------------------------------------------------------+
+#ifdef __MQL4__
 int OnCalculate(const int rates_total, const int prev_calculated, const datetime &time[], const double &open[],
                 const double &high[], const double &low[], const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
+#else
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const int begin,
+                const double &price[]) {
+   int start_pos = (fmin(CCI_per, RSI_per)-1) + begin;
+   // Check for bars count.
+   if(rates_total < start_pos) {
+      return(0);
+   }
+   // Correct draw begin.
+   if(begin>0) PlotIndexSetInteger(0,PLOT_DRAW_BEGIN,start_pos+(fmin(CCI_per, RSI_per)-1));
+#endif
+
   int i, limit = rates_total - prev_calculated;
 
   for (i = limit - 3; i >= 0; i--) {
