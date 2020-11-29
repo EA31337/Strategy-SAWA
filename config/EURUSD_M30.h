@@ -1,8 +1,13 @@
 /*
  * @file
- * Defines strategy's default parameter values
+ * Defines strategy's and indicator's default parameter values
  * for the given pair symbol and timeframe.
  */
+
+// Defines indicator's parameter values for the given pair symbol and timeframe.
+struct Indi_eSAWA_Params_M30 : Indi_eSAWA_Params {
+  Indi_eSAWA_Params_M30() : Indi_eSAWA_Params(indi_esawa_defaults, PERIOD_M30) { shift = 0; }
+} indi_esawa_m30;
 
 // Defines strategy's parameter values for the given pair symbol and timeframe.
 struct Stg_eSAWA_Params_M30 : StgParams {

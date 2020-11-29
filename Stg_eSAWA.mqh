@@ -18,8 +18,9 @@ INPUT int eSAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
 INPUT float eSAWA_MaxSpread = 2.0;           // Max spread to trade (in pips)
 
 // Includes.
-//#include <EA31337-classes/Indi_eSAWA.mqh>
 #include <EA31337-classes/Strategy.mqh>
+
+#include "Indi_eSAWA.mqh"
 
 // Defines struct with default user strategy values.
 struct Stg_eSAWA_Params_Defaults : StgParams {
@@ -53,13 +54,16 @@ class Stg_eSAWA : public Strategy {
 
   static Stg_eSAWA *Init(ENUM_TIMEFRAMES _tf = NULL, long _magic_no = NULL, ENUM_LOG_LEVEL _log_level = V_INFO) {
     // Initialize strategy initial values.
+    Indi_eSAWA_Params _indi_params(indi_esawa_defaults, _tf);
     StgParams _stg_params(stg_esawa_defaults);
     if (!Terminal::IsOptimization()) {
+      SetParamsByTf<Indi_eSAWA_Params>(_indi_params, _tf, indi_esawa_m1, indi_esawa_m5, indi_esawa_m15, indi_esawa_m30,
+                                       indi_esawa_h1, indi_esawa_h4, indi_esawa_h8);
       SetParamsByTf<StgParams>(_stg_params, _tf, stg_esawa_m1, stg_esawa_m5, stg_esawa_m15, stg_esawa_m30, stg_esawa_h1,
                                stg_esawa_h4, stg_esawa_h8);
     }
     // Initialize indicator.
-    _stg_params.SetIndicator(new Indi_eSAWA());
+    _stg_params.SetIndicator(new Indi_eSAWA(_indi_params));
     // Initialize strategy parameters.
     _stg_params.GetLog().SetLevel(_log_level);
     _stg_params.SetMagicNo(_magic_no);
