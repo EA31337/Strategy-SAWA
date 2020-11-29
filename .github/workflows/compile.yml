@@ -19,7 +19,7 @@ on:
       - '.git*'
 
 jobs:
-  Compile:
+  Compile-Indicators:
     defaults:
       run:
         shell: powershell
@@ -37,7 +37,7 @@ jobs:
           include: .
           init-platform: true
           mt-version: 5.0.0.2361
-          path: eSAWA.mq4
+          path: Indicators/eSAWA.mq4
           verbose: true
       - name: Copy Math includes
         run: Copy-Item -Recurse ../MetaTrader/MQL5/Include/Math Include/
@@ -46,7 +46,7 @@ jobs:
         with:
           include: .
           mt-version: 5.0.0.2515
-          path: eSAWA.mq5
+          path: Indicators/eSAWA.mq5
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
