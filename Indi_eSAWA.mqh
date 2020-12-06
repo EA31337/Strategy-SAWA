@@ -28,9 +28,6 @@ INPUT int Indi_eSAWA_Koef = 8;                                        // Koef
 INPUT bool Indi_eSAWA_Arrows = true;                                  // Show arrows
 INPUT int Indi_eSAWA_Shift = 0;                                       // Shift
 
-// Includes.
-#include <EA31337-classes/Indicator.mqh>
-
 // Structs.
 
 // Defines struct to store indicator parameter values.
