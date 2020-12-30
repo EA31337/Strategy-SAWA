@@ -1,0 +1,7 @@
+; Optimize max spread param.
+eSAWA_MaxSpread,1=10
+eSAWA_MaxSpread,2=10
+eSAWA_MaxSpread,3=40
+eSAWA_MaxSpread,F=1
+eSAWA_SignalOpenFilterMethod=1
+eSAWA_TickFilterMethod=1
