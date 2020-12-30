@@ -16,6 +16,7 @@ INPUT int eSAWA_PriceStopMethod = 0;         // Price limit method
 INPUT float eSAWA_PriceStopLevel = 2;        // Price limit level
 INPUT int eSAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
 INPUT float eSAWA_MaxSpread = 2.0;           // Max spread to trade (in pips)
+INPUT int eSAWA_OrderCloseTime = -10;        // Order close time in mins (>0) or bars (<0)
 
 // Includes.
 #include "Indi_eSAWA.mqh"
@@ -26,7 +27,7 @@ struct Stg_eSAWA_Params_Defaults : StgParams {
       : StgParams(::eSAWA_SignalOpenMethod, ::eSAWA_SignalOpenFilterMethod, ::eSAWA_SignalOpenLevel,
                   ::eSAWA_SignalOpenBoostMethod, ::eSAWA_SignalCloseMethod, ::eSAWA_SignalCloseLevel,
                   ::eSAWA_PriceStopMethod, ::eSAWA_PriceStopLevel, ::eSAWA_TickFilterMethod, ::eSAWA_MaxSpread,
-                  ::eSAWA_Shift) {}
+                  ::eSAWA_Shift, ::eSAWA_OrderCloseTime) {}
 } stg_esawa_defaults;
 
 // Defines struct to store indicator and strategy params.
