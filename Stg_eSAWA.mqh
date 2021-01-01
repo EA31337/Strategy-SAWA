@@ -7,16 +7,16 @@
 INPUT float eSAWA_LotSize = 0;               // Lot size
 INPUT int eSAWA_Shift = 0;                   // Shift (relative to the current bar, 0 - default)
 INPUT int eSAWA_SignalOpenMethod = 0;        // Signal open method
-INPUT int eSAWA_SignalOpenFilterMethod = 0;  // Signal open filter method
-INPUT float eSAWA_SignalOpenLevel = 0;       // Signal open level
+INPUT int eSAWA_SignalOpenFilterMethod = 1;  // Signal open filter method
+INPUT float eSAWA_SignalOpenLevel = 0.0f;    // Signal open level
 INPUT int eSAWA_SignalOpenBoostMethod = 0;   // Signal open boost method
 INPUT int eSAWA_SignalCloseMethod = 0;       // Signal close method
-INPUT float eSAWA_SignalCloseLevel = 0;      // Signal close level
+INPUT float eSAWA_SignalCloseLevel = 0.0f;   // Signal close level
 INPUT int eSAWA_PriceStopMethod = 0;         // Price limit method
 INPUT float eSAWA_PriceStopLevel = 2;        // Price limit level
 INPUT int eSAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
-INPUT float eSAWA_MaxSpread = 2.0;           // Max spread to trade (in pips)
-INPUT int eSAWA_OrderCloseTime = -10;        // Order close time in mins (>0) or bars (<0)
+INPUT float eSAWA_MaxSpread = 4.0;           // Max spread to trade (in pips)
+INPUT int eSAWA_OrderCloseTime = -20;        // Order close time in mins (>0) or bars (<0)
 
 // Includes.
 #include "Indi_eSAWA.mqh"
