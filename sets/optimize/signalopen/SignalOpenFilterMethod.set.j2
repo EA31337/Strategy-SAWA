@@ -1,6 +1,6 @@
 eSAWA_Indi_eSAWA_Applied_Price={{ applied_price | replace("(ENUM_APPLIED_PRICE)", "") | int | default(0) }}
 eSAWA_Indi_eSAWA_MA_Method={{ ma_method | default(0) }}
-eSAWA_Indi_eSAWA_Period={{ period | default(4) }}
+eSAWA_Indi_eSAWA_Period={{ (period | default(0) | int) }}
 eSAWA_Indi_eSAWA_Shift={{ shift | default(0) }}
 eSAWA_LotSize={{ lot_size | default(0) }}
 eSAWA_PriceStopLevel={{ price_stop_level | replace("(float)", "") | float | default(0) }}
