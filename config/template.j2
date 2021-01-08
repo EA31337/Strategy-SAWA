@@ -25,7 +25,7 @@ struct Stg_eSAWA_Params_{{ Timeframe }} : StgParams {
     signal_close_method = {{ eSAWA_SignalCloseMethod | default(0) }};
     signal_close_level = (float){{ eSAWA_SignalCloseLevel | default(0) }};
     price_stop_method = {{ eSAWA_PriceStopMethod | default(0) }};
-    price_stop_level = {{ eSAWA_SignalCloseLevel | default(1) }};
+    price_stop_level = (float){{ eSAWA_SignalCloseLevel | default(1) }};
     tick_filter_method = {{ eSAWA_TickFilterMethod  | default(1) }};
     max_spread = {{ eSAWA_MaxSpread | default(0) }};
   }
