@@ -1,7 +1,7 @@
 ; Optimize signal close method param.
-eSAWA_SignalCloseMethod,1=-4
-eSAWA_SignalCloseMethod,2=1
-eSAWA_SignalCloseMethod,3=4
-eSAWA_SignalCloseMethod,F=1
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_SignalCloseMethod,1=-4
+SAWA_SignalCloseMethod,2=1
+SAWA_SignalCloseMethod,3=4
+SAWA_SignalCloseMethod,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

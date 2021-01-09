@@ -1,9 +1,9 @@
 //+------------------------------------------------------------------+
-//|                                                         eSAWA.mq4|
+//|                                                         SAWA.mq4|
 //|                                                         indicator|
 //|                                              http://fx.essawa.com|
 //+------------------------------------------------------------------+
-#property copyright "Copyright © 2016 | eSAWA.com"
+#property copyright "Copyright © 2016 | SAWA.com"
 #property link      " http://fx.essawa.com"
 #property version   "1.002"
 
@@ -50,7 +50,7 @@ int init()
    SetIndexLabel(0,"CCI-RSI");
    SetIndexLabel(1,"RSI-CCI");
    if(koef>8 || koef<0)koef=8;
-   sPrefix="eSAWA("+(string) CCI_per+", "+(string) RSI_per+": "+(string) koef+" )";
+   sPrefix="SAWA("+(string) CCI_per+", "+(string) RSI_per+": "+(string) koef+" )";
    IndicatorShortName(sPrefix);
 //----
    return(0);

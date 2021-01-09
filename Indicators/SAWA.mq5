@@ -34,4 +34,4 @@ int OnCalculate(const int rates_total, const int prev_calculated, const int begi
 }
 
 // Includes the main file.
-#include "eSAWA.mq4"
+#include "SAWA.mq4"

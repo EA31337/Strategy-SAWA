@@ -1,7 +1,7 @@
 ; Optimize strategy shift param.
-eSAWA_Shift,1=0
-eSAWA_Shift,2=1
-eSAWA_Shift,3=1
-eSAWA_Shift,F=1
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_Shift,1=0
+SAWA_Shift,2=1
+SAWA_Shift,3=1
+SAWA_Shift,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

@@ -1,7 +1,7 @@
 ; Optimize price stop level param.
-eSAWA_PriceStopLevel,1=10
-eSAWA_PriceStopLevel,2=5
-eSAWA_PriceStopLevel,3=40
-eSAWA_PriceStopLevel,F=1
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_PriceStopLevel,1=10
+SAWA_PriceStopLevel,2=5
+SAWA_PriceStopLevel,3=40
+SAWA_PriceStopLevel,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

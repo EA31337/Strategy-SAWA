@@ -1,8 +1,8 @@
 ; Optimize price stop method param.
-eSAWA_PriceStopMethod,1=0
-eSAWA_PriceStopMethod,2=1
-eSAWA_PriceStopMethod,3=4
-eSAWA_PriceStopMethod,F=1
-eSAWA_OrderCloseTime=-20
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_PriceStopMethod,1=0
+SAWA_PriceStopMethod,2=1
+SAWA_PriceStopMethod,3=4
+SAWA_PriceStopMethod,F=1
+SAWA_OrderCloseTime=-20
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

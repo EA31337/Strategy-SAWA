@@ -4,29 +4,29 @@
  */
 
 // Defines indicator's parameter values for the given pair symbol and timeframe.
-struct Indi_eSAWA_Params_{{ Timeframe }} : Indi_eSAWA_Params {
-  Indi_eSAWA_Params_{{ Timeframe }}() : Indi_eSAWA_Params(indi_force_defaults, PERIOD_{{ Timeframe }}) {
-    applied_price = (ENUM_APPLIED_PRICE){{ eSAWA_Indi_eSAWA_Applied_Price | default(0) }};
-    ma_method = {{ eSAWA_Indi_eSAWA_MA_Method | default(0) }};
-    period = {{ eSAWA_Indi_eSAWA_Period | default(0) }};
-    shift = {{ eSAWA_Shift | default(0) }};
+struct Indi_SAWA_Params_{{ Timeframe }} : Indi_SAWA_Params {
+  Indi_SAWA_Params_{{ Timeframe }}() : Indi_SAWA_Params(indi_force_defaults, PERIOD_{{ Timeframe }}) {
+    applied_price = (ENUM_APPLIED_PRICE){{ SAWA_Indi_SAWA_Applied_Price | default(0) }};
+    ma_method = {{ SAWA_Indi_SAWA_MA_Method | default(0) }};
+    period = {{ SAWA_Indi_SAWA_Period | default(0) }};
+    shift = {{ SAWA_Shift | default(0) }};
   }
 } indi_force_{{ Timeframe | lower }};
 
 // Defines strategy's parameter values for the given pair symbol and timeframe.
-struct Stg_eSAWA_Params_{{ Timeframe }} : StgParams {
+struct Stg_SAWA_Params_{{ Timeframe }} : StgParams {
   // Struct constructor.
-  Stg_eSAWA_Params_{{ Timeframe }}() : StgParams(stg_force_defaults) {
-    lot_size = {{ eSAWA_LotSize | default(0) }};
-    signal_open_method = {{ eSAWA_SignalOpenMethod | default(0) }};
-    signal_open_filter = {{ eSAWA_SignalOpenFilterMethod | default(1) }};
-    signal_open_level = (float){{ eSAWA_SignalOpenLevel | default(0) }};
-    signal_open_boost = {{ eSAWA_SignalOpenBoostMethod | default(0) }};
-    signal_close_method = {{ eSAWA_SignalCloseMethod | default(0) }};
-    signal_close_level = (float){{ eSAWA_SignalCloseLevel | default(0) }};
-    price_stop_method = {{ eSAWA_PriceStopMethod | default(0) }};
-    price_stop_level = (float){{ eSAWA_SignalCloseLevel | default(1) }};
-    tick_filter_method = {{ eSAWA_TickFilterMethod  | default(1) }};
-    max_spread = {{ eSAWA_MaxSpread | default(0) }};
+  Stg_SAWA_Params_{{ Timeframe }}() : StgParams(stg_force_defaults) {
+    lot_size = {{ SAWA_LotSize | default(0) }};
+    signal_open_method = {{ SAWA_SignalOpenMethod | default(0) }};
+    signal_open_filter = {{ SAWA_SignalOpenFilterMethod | default(1) }};
+    signal_open_level = (float){{ SAWA_SignalOpenLevel | default(0) }};
+    signal_open_boost = {{ SAWA_SignalOpenBoostMethod | default(0) }};
+    signal_close_method = {{ SAWA_SignalCloseMethod | default(0) }};
+    signal_close_level = (float){{ SAWA_SignalCloseLevel | default(0) }};
+    price_stop_method = {{ SAWA_PriceStopMethod | default(0) }};
+    price_stop_level = (float){{ SAWA_SignalCloseLevel | default(1) }};
+    tick_filter_method = {{ SAWA_TickFilterMethod  | default(1) }};
+    max_spread = {{ SAWA_MaxSpread | default(0) }};
   }
 } stg_force_{{ Timeframe | lower }};

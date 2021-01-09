@@ -1,7 +1,7 @@
 ; Optimize signal open boost method param.
-eSAWA_SignalOpenBoostMethod,1=1
-eSAWA_SignalOpenBoostMethod,2=1
-eSAWA_SignalOpenBoostMethod,3=8
-eSAWA_SignalOpenBoostMethod,F=1
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_SignalOpenBoostMethod,1=1
+SAWA_SignalOpenBoostMethod,2=1
+SAWA_SignalOpenBoostMethod,3=8
+SAWA_SignalOpenBoostMethod,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

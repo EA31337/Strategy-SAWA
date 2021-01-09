@@ -1,7 +1,7 @@
 ; Optimize signal close level param.
-eSAWA_SignalCloseLevel,1=10
-eSAWA_SignalCloseLevel,2=5
-eSAWA_SignalCloseLevel,3=40
-eSAWA_SignalCloseLevel,F=1
-eSAWA_SignalOpenFilterMethod=1
-eSAWA_TickFilterMethod=1
+SAWA_SignalCloseLevel,1=10
+SAWA_SignalCloseLevel,2=5
+SAWA_SignalCloseLevel,3=40
+SAWA_SignalCloseLevel,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

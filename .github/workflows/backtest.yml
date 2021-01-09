@@ -35,7 +35,7 @@ jobs:
           include: .
           init-platform: true
           mt-version: 5.0.0.2361
-          path: Indicators/eSAWA.mq4
+          path: Indicators/SAWA.mq4
           verbose: true
       - name: Copy Math includes
         run: Copy-Item -Recurse ../MetaTrader/MQL5/Include/Math Include/
@@ -44,7 +44,7 @@ jobs:
         with:
           include: .
           mt-version: 5.0.0.2515
-          path: Indicators/eSAWA.mq5
+          path: Indicators/SAWA.mq5
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -72,7 +72,7 @@ jobs:
           include: .
           init-platform: true
           mt-version: 5.0.0.2361
-          path: Stg_eSAWA.mq4
+          path: Stg_SAWA.mq4
           verbose: true
       - name: Copy Math includes
         run: Copy-Item -Recurse ../MetaTrader/MQL5/Include/Math Include/
@@ -81,7 +81,7 @@ jobs:
         with:
           include: .
           mt-version: 5.0.0.2515
-          path: Stg_eSAWA.mq5
+          path: Stg_SAWA.mq5
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -112,7 +112,7 @@ jobs:
           OptFormatBrief: true
           OptFormatJson: true
           OptVerbose: true
-          TestExpert: "Stg_eSAWA"
+          TestExpert: "Stg_SAWA"
           TestPeriod: M1
           TestReportName: Report-${{ matrix.year }}-${{ matrix.month }}
       - name: Upload results

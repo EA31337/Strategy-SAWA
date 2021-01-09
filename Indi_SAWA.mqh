@@ -20,30 +20,30 @@
  */
 
 // User input params.
-INPUT string __eSAWA_Indi_Params__ = "-- eSAWA indicator params --";  // >>> eSAWA indicator <<<
-INPUT int Indi_eSAWA_CCIPeriod = 14;                                  // CCI period
-INPUT int Indi_eSAWA_RSIPeriod = 14;                                  // RSI period
-INPUT int Indi_eSAWA_MAPeriod = 14;                                   // MA period
-INPUT int Indi_eSAWA_Koef = 8;                                        // Koef
-INPUT bool Indi_eSAWA_Arrows = true;                                  // Show arrows
-INPUT int Indi_eSAWA_Shift = 0;                                       // Shift
+INPUT string __SAWA_Indi_Params__ = "-- SAWA indicator params --";  // >>> SAWA indicator <<<
+INPUT int Indi_SAWA_CCIPeriod = 14;                                 // CCI period
+INPUT int Indi_SAWA_RSIPeriod = 14;                                 // RSI period
+INPUT int Indi_SAWA_MAPeriod = 14;                                  // MA period
+INPUT int Indi_SAWA_Koef = 8;                                       // Koef
+INPUT bool Indi_SAWA_Arrows = true;                                 // Show arrows
+INPUT int Indi_SAWA_Shift = 0;                                      // Shift
 
 // Structs.
 
 // Defines struct to store indicator parameter values.
-struct Indi_eSAWA_Params : public IndicatorParams {
+struct Indi_SAWA_Params : public IndicatorParams {
   // Indicator params.
   int cci_period, rsi_period, ma_period, koef;
   // Struct constructors.
-  void Indi_eSAWA_Params(int _cci_period, int _rsi_period, int _ma_period, int _koef, int _shift = 0)
+  void Indi_SAWA_Params(int _cci_period, int _rsi_period, int _ma_period, int _koef, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
     max_modes = 3;
-    custom_indi_name = "eSAWA";
+    custom_indi_name = "SAWA";
     shift = _shift;
     SetDataSourceType(IDATA_ICUSTOM);
     SetDataValueType(TYPE_DOUBLE);
   };
-  void Indi_eSAWA_Params(Indi_eSAWA_Params &_params, ENUM_TIMEFRAMES _tf) {
+  void Indi_SAWA_Params(Indi_SAWA_Params &_params, ENUM_TIMEFRAMES _tf) {
     this = _params;
     _params.tf = _tf;
   }
@@ -62,28 +62,28 @@ struct Indi_eSAWA_Params : public IndicatorParams {
 };
 
 // Defines struct with default user indicator values.
-struct Indi_eSAWA_Params_Defaults : Indi_eSAWA_Params {
-  Indi_eSAWA_Params_Defaults()
-      : Indi_eSAWA_Params(::Indi_eSAWA_CCIPeriod, ::Indi_eSAWA_RSIPeriod, ::Indi_eSAWA_MAPeriod, ::Indi_eSAWA_Koef,
-                          ::Indi_eSAWA_Shift) {}
-} indi_esawa_defaults;
+struct Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
+  Indi_SAWA_Params_Defaults()
+      : Indi_SAWA_Params(::Indi_SAWA_CCIPeriod, ::Indi_SAWA_RSIPeriod, ::Indi_SAWA_MAPeriod, ::Indi_SAWA_Koef,
+                         ::Indi_SAWA_Shift) {}
+} indi_sawa_defaults;
 
 /**
  * Implements indicator class.
  */
-class Indi_eSAWA : public Indicator {
+class Indi_SAWA : public Indicator {
  public:
   // Structs.
-  Indi_eSAWA_Params params;
+  Indi_SAWA_Params params;
 
   /**
    * Class constructor.
    */
-  Indi_eSAWA(Indi_eSAWA_Params &_p)
+  Indi_SAWA(Indi_SAWA_Params &_p)
       : params(_p.cci_period, _p.rsi_period, _p.ma_period, _p.koef, _p.shift), Indicator((IndicatorParams)_p) {
     params = _p;
   }
-  Indi_eSAWA(Indi_eSAWA_Params &_p, ENUM_TIMEFRAMES _tf)
+  Indi_SAWA(Indi_SAWA_Params &_p, ENUM_TIMEFRAMES _tf)
       : params(_p.cci_period, _p.rsi_period, _p.ma_period, _p.koef, _p.shift), Indicator(NULL, _tf) {
     params = _p;
   }
@@ -91,7 +91,7 @@ class Indi_eSAWA : public Indicator {
   /**
    * Gets indicator's params.
    */
-  // Indi_eSAWA_Params GetIndiParams() const { return params; }
+  // Indi_SAWA_Params GetIndiParams() const { return params; }
 
   /**
    * Returns the indicator's value.
@@ -103,7 +103,7 @@ class Indi_eSAWA : public Indicator {
     switch (params.idstype) {
       case IDATA_ICUSTOM:
         _value = iCustom(istate.handle, GetSymbol(), GetTf(), params.custom_indi_name, params.tf, params.GetCCIPeriod(),
-                         params.GetRSIPeriod(), params.GetMAPeriod(), params.GetKoef(), ::Indi_eSAWA_Arrows, _mode,
+                         params.GetRSIPeriod(), params.GetMAPeriod(), params.GetKoef(), ::Indi_SAWA_Arrows, _mode,
                          params.GetShift());
         break;
       default:
