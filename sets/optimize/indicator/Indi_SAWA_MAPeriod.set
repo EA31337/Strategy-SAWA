@@ -1,0 +1,7 @@
+; Optimize strategy indicator's SAWA period param.
+SAWA_Indi_SAWA_CCIPeriod,1=4
+SAWA_Indi_SAWA_CCIPeriod,2=4
+SAWA_Indi_SAWA_CCIPeriod,3=24
+SAWA_Indi_SAWA_CCIPeriod,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1

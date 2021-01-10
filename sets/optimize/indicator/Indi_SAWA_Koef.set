@@ -1,0 +1,7 @@
+; Optimize strategy indicator's SAWA params.
+SAWA_Indi_SAWA_Koef,1=0
+SAWA_Indi_SAWA_Koef,2=2
+SAWA_Indi_SAWA_Koef,3=8
+SAWA_Indi_SAWA_Koef,F=1
+SAWA_SignalOpenFilterMethod=1
+SAWA_TickFilterMethod=1
