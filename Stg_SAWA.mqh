@@ -17,9 +17,23 @@ INPUT float SAWA_PriceStopLevel = 2;        // Price limit level
 INPUT int SAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
 INPUT float SAWA_MaxSpread = 4.0;           // Max spread to trade (in pips)
 INPUT int SAWA_OrderCloseTime = -20;        // Order close time in mins (>0) or bars (<0)
+INPUT string __SAWA_Indi_SAWA_Params__ =
+    "-- SAWA strategy: SAWA indicator params --";  // >>> SAWA strategy: SAWA indicator <<<
+INPUT int SAWA_Indi_SAWA_CCIPeriod = 14;           // CCI period
+INPUT int SAWA_Indi_SAWA_RSIPeriod = 14;           // RSI period
+INPUT int SAWA_Indi_SAWA_MAPeriod = 14;            // MA period
+INPUT int SAWA_Indi_SAWA_Koef = 8;                 // Koef
+INPUT bool SAWA_Indi_SAWA_Arrows = true;           // Show arrows
+INPUT int SAWA_Indi_SAWA_Shift = 0;                // Shift
 
-// Includes.
-#include "Indi_SAWA.mqh"
+// Structs.
+
+// Defines struct with default user indicator values.
+struct Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
+  Indi_SAWA_Params_Defaults()
+      : Indi_SAWA_Params(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
+                         ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
+} indi_sawa_defaults;
 
 // Defines struct with default user strategy values.
 struct Stg_SAWA_Params_Defaults : StgParams {

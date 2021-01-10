@@ -19,15 +19,6 @@
  *
  */
 
-// User input params.
-INPUT string __SAWA_Indi_Params__ = "-- SAWA indicator params --";  // >>> SAWA indicator <<<
-INPUT int Indi_SAWA_CCIPeriod = 14;                                 // CCI period
-INPUT int Indi_SAWA_RSIPeriod = 14;                                 // RSI period
-INPUT int Indi_SAWA_MAPeriod = 14;                                  // MA period
-INPUT int Indi_SAWA_Koef = 8;                                       // Koef
-INPUT bool Indi_SAWA_Arrows = true;                                 // Show arrows
-INPUT int Indi_SAWA_Shift = 0;                                      // Shift
-
 // Structs.
 
 // Defines struct to store indicator parameter values.
@@ -60,13 +51,6 @@ struct Indi_SAWA_Params : public IndicatorParams {
   void SetKoef(int _value) { koef = _value; }
   void SetShift(int _value) { shift = _value; }
 };
-
-// Defines struct with default user indicator values.
-struct Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
-  Indi_SAWA_Params_Defaults()
-      : Indi_SAWA_Params(::Indi_SAWA_CCIPeriod, ::Indi_SAWA_RSIPeriod, ::Indi_SAWA_MAPeriod, ::Indi_SAWA_Koef,
-                         ::Indi_SAWA_Shift) {}
-} indi_sawa_defaults;
 
 /**
  * Implements indicator class.
