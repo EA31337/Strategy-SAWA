@@ -10,5 +10,5 @@ SAWA_Indi_SAWA_Shift={{ shift | default(0) }}
 SAWA_LotSize={{ lot_size | default(0) }}
 SAWA_PriceStopMethod=0
 SAWA_SignalOpenFilterMethod=1
-SAWA_SignalOpenLevel={{ signal_open_level | replace("(float)", "") | float | default(0) }}
+SAWA_SignalOpenLevel={{ (signal_open_level | default(0) | replace("(float)", "") | float) }}
 SAWA_TickFilterMethod=1
