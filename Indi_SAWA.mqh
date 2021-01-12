@@ -87,7 +87,7 @@ class Indi_SAWA : public Indicator {
     switch (params.idstype) {
       case IDATA_ICUSTOM:
         _value = iCustom(istate.handle, GetSymbol(), GetTf(), params.custom_indi_name, params.tf, params.GetCCIPeriod(),
-                         params.GetRSIPeriod(), params.GetMAPeriod(), params.GetKoef(), ::Indi_SAWA_Arrows, _mode,
+                         params.GetRSIPeriod(), params.GetMAPeriod(), params.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode,
                          params.GetShift());
         break;
       default:
