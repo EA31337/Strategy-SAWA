@@ -9,7 +9,7 @@ struct Indi_SAWA_Params_{{ Timeframe }} : Indi_SAWA_Params {
     applied_price = (ENUM_APPLIED_PRICE){{ SAWA_Indi_SAWA_Applied_Price | default(0) }};
     ma_method = (ENUM_MA_METHOD){{ SAWA_Indi_SAWA_MA_Method | default(0) }};
     period = {{ SAWA_Indi_SAWA_Period | default(0) }};
-    shift = {{ SAWA_Shift | default(0) }};
+    shift = {{ SAWA_Indi_SAWA_Shift | default(0) }};
   }
 } indi_force_{{ Timeframe | lower }};
 

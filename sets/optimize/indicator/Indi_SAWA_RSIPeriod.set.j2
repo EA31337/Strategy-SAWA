@@ -13,4 +13,5 @@ SAWA_LotSize={{ lot_size | default(0) }}
 SAWA_PriceStopMethod=0
 SAWA_SignalOpenFilterMethod=1
 SAWA_SignalOpenLevel={{ (signal_open_level | default(0) | replace("(float)", "") | float) }}
+SAWA_SignalOpenLevel={{ signal_open_level | default(0) | float }}
 SAWA_TickFilterMethod=1

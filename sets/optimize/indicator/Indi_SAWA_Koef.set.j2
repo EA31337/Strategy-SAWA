@@ -1,3 +1,4 @@
+SAWA_Indi_SAWA_Applied_Price={{ applied_price | replace("(ENUM_APPLIED_PRICE)", "") | int | default(0) }}
 SAWA_Indi_SAWA_CCIPeriod={{ (cci_period | default(0) | int) }}
 SAWA_Indi_SAWA_Koef,1=0
 SAWA_Indi_SAWA_Koef,2=2
@@ -5,10 +6,12 @@ SAWA_Indi_SAWA_Koef,3=8
 SAWA_Indi_SAWA_Koef,F=1
 SAWA_Indi_SAWA_Koef={{ shift | default(0) }}
 SAWA_Indi_SAWA_MAPeriod={{ (ma_period | default(0) | int) }}
+SAWA_Indi_SAWA_MA_Method={{ ma_method | default(0) }}
 SAWA_Indi_SAWA_RSIPeriod={{ (rsi_period | default(0) | int) }}
 SAWA_Indi_SAWA_Shift={{ shift | default(0) }}
 SAWA_LotSize={{ lot_size | default(0) }}
 SAWA_PriceStopMethod=0
 SAWA_SignalOpenFilterMethod=1
 SAWA_SignalOpenLevel={{ (signal_open_level | default(0) | replace("(float)", "") | float) }}
+SAWA_SignalOpenLevel={{ signal_open_level | default(0) | float }}
 SAWA_TickFilterMethod=1
