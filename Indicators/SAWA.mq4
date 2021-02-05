@@ -38,7 +38,7 @@ string sPrefix;
 int init()
   {
 //---- indicators
-   IndicatorBuffers(4);
+   //IndicatorBuffers(4);
    SetIndexStyle(0,DRAW_LINE,0,2);
    SetIndexBuffer(0,ExtMapBuffer1, INDICATOR_DATA);
    SetIndexStyle(1,DRAW_LINE,0,2);
@@ -60,7 +60,7 @@ int init()
 //+------------------------------------------------------------------+
 int deinit()
   {
-   DelOb();
+   //DelOb();
    return(0);
   }
 //+------------------------------------------------------------------+
@@ -73,6 +73,7 @@ int start()
    for(i=limit-3;i>=0;i--)
      {
 
+/*
       a=iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i)-iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i);
       if(i-1>=0) a1=(iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i-1)-iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i+1));
       if(i-2>=0) a2=(iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i-2)-iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i+2));
@@ -93,7 +94,7 @@ int start()
       if(i-6>=0) b6=(iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i-6)-iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i+6));
       if(i-7>=0) b7=(iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i-7)-iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i+7));
       if(i-8>=0) b8=(iRSI(NULL,0,RSI_per,PRICE_TYPICAL,i-8)-iCCI(NULL,0,CCI_per,PRICE_TYPICAL,i+8));
-
+*/
       switch(koef)
         {
          case 0     : tt1max=a; tt2min=b; break;
@@ -116,9 +117,11 @@ int start()
    for(i=0; i<limit && !IsStopped(); i++)
      {
 
-      ExtMapBuffer1[i]=iMAOnArray(ExtMapBuffer3,Bars,Ma_Period,0,MODE_SMA,i);
-      ExtMapBuffer2[i]=iMAOnArray(ExtMapBuffer4,Bars,Ma_Period,0,MODE_SMA,i);
+      //ExtMapBuffer1[i]=iMAOnArray(ExtMapBuffer3,Bars,Ma_Period,0,MODE_SMA,i);
+      //ExtMapBuffer2[i]=iMAOnArray(ExtMapBuffer4,Bars,Ma_Period,0,MODE_SMA,i);
      }
+     
+     if (false)
    for(i=0; i<limit-1 && !IsStopped(); i++)
      {
       if(arrows)
