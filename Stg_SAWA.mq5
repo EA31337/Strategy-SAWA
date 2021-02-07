@@ -3,6 +3,9 @@
  * Implements SAWA strategy.
  */
 
+// Includes conditional compilation directives.
+#include "config/define.h"
+
 // Includes EA31337 framework.
 #include <EA31337-classes/EA.mqh>
 #include <EA31337-classes/Indicator.mqh>
@@ -14,8 +17,7 @@ input int Active_Tfs = 15;                // Activated timeframes (1-255) [M1=1,
 input ENUM_LOG_LEVEL Log_Level = V_INFO;  // Log level.
 input bool Info_On_Chart = true;          // Display info on chart.
 
-// Includes local classes.
-#include "Indi_SAWA.mqh"
+// Includes strategy file.
 #include "Stg_SAWA.mqh"
 
 // Defines.

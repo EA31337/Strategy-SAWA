@@ -3,6 +3,9 @@
  * Implements SAWA strategy based on the SAWA indicator.
  */
 
+// Includes indicator class.
+#include "Indi_SAWA.mqh"
+
 // User input params.
 INPUT float SAWA_LotSize = 0;               // Lot size
 INPUT int SAWA_Shift = 0;                   // Shift (relative to the current bar, 0 - default)
@@ -69,12 +72,12 @@ class Stg_SAWA : public Strategy {
     // Initialize strategy initial values.
     Indi_SAWA_Params _indi_params(indi_sawa_defaults, _tf);
     StgParams _stg_params(stg_sawa_defaults);
-    if (!Terminal::IsOptimization()) {
-      SetParamsByTf<Indi_SAWA_Params>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
-                                      indi_sawa_h1, indi_sawa_h4, indi_sawa_h8);
-      SetParamsByTf<StgParams>(_stg_params, _tf, stg_sawa_m1, stg_sawa_m5, stg_sawa_m15, stg_sawa_m30, stg_sawa_h1,
-                               stg_sawa_h4, stg_sawa_h8);
-    }
+#ifdef __config__
+    SetParamsByTf<Indi_SAWA_Params>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
+                                    indi_sawa_h1, indi_sawa_h4, indi_sawa_h8);
+    SetParamsByTf<StgParams>(_stg_params, _tf, stg_sawa_m1, stg_sawa_m5, stg_sawa_m15, stg_sawa_m30, stg_sawa_h1,
+                             stg_sawa_h4, stg_sawa_h8);
+#endif
     // Initialize indicator.
     _stg_params.SetIndicator(new Indi_SAWA(_indi_params));
     // Initialize strategy parameters.
