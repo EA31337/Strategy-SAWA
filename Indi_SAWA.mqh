@@ -86,9 +86,9 @@ class Indi_SAWA : public Indicator {
     double _value = EMPTY_VALUE;
     switch (params.idstype) {
       case IDATA_ICUSTOM:
-        _value = iCustom(istate.handle, GetSymbol(), GetTf(), params.custom_indi_name, params.tf, params.GetCCIPeriod(),
+        _value = iCustom(istate.handle, GetSymbol(), GetTf(), params.custom_indi_name, params.GetCCIPeriod(),
                          params.GetRSIPeriod(), params.GetMAPeriod(), params.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode,
-                         params.GetShift());
+                         params.GetShift() + _shift);
         break;
       default:
         SetUserError(ERR_USER_NOT_SUPPORTED);
@@ -105,7 +105,7 @@ class Indi_SAWA : public Indicator {
   IndicatorDataEntry GetEntry(int _shift = 0) {
     long _bar_time = GetBarTime(_shift);
     unsigned int _position;
-    IndicatorDataEntry _entry;
+    IndicatorDataEntry _entry(params.max_modes);
     if (idata.KeyExists(_bar_time, _position)) {
       _entry = idata.GetByPos(_position);
     } else {

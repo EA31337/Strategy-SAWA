@@ -9,16 +9,50 @@ on:
       - 'dev*'
     paths-ignore:
       - '*.md'
-      - '.git*'
   push:
     branches:
       - 'master'
       - 'dev*'
     paths-ignore:
       - '*.md'
-      - '.git*'
 
 jobs:
+  Compile-Indicators:
+    defaults:
+      run:
+        shell: powershell
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          path: Include/EA31337-classes
+          ref: dev
+          repository: EA31337/EA31337-classes
+      - name: Compile required indicator for MQL4
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: Indicators/SAWA.mq4
+          verbose: true
+      - name: Compile required indicator for MQL5
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2515
+          path: Indicators/SAWA.mq5
+          verbose: true
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+      - name: Upload indicator artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Indicators
+          path: 'Indicators/*.ex?'
   Compile-EA:
     defaults:
       run:
@@ -56,42 +90,6 @@ jobs:
         with:
           name: EA
           path: '*.ex?'
-  Compile-Indicators:
-    defaults:
-      run:
-        shell: powershell
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-        with:
-          path: Include/EA31337-classes
-          ref: dev
-          repository: EA31337/EA31337-classes
-      - name: Compile required indicator for MQL4
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: .
-          init-platform: true
-          mt-version: 5.0.0.2361
-          path: Indicators/SAWA.mq4
-          verbose: true
-      - name: Compile required indicator for MQL5
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: .
-          init-platform: true
-          mt-version: 5.0.0.2515
-          path: Indicators/SAWA.mq5
-          verbose: true
-      - name: List compiled files
-        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - run: Get-Location
-      - name: Upload indicator artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Indicators
-          path: 'Indicators/*.ex?'
   Test:
     needs: [Compile-EA, Compile-Indicators]
     runs-on: ubuntu-latest
@@ -116,7 +114,7 @@ jobs:
           OptFormatBrief: true
           OptFormatJson: true
           OptVerbose: true
-          TestExpert: "Stg_SAWA"
+          TestExpert: "Stg_Sawa"
           TestPeriod: M1
           TestReportName: Report-${{ matrix.year }}-${{ matrix.month }}
       - name: Upload results
