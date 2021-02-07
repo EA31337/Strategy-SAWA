@@ -3,6 +3,9 @@
  * Implements SAWA strategy based on the SAWA indicator.
  */
 
+// Includes indicator class.
+#include "Indi_SAWA.mqh"
+
 // User input params.
 INPUT float SAWA_LotSize = 0;               // Lot size
 INPUT int SAWA_Shift = 0;                   // Shift (relative to the current bar, 0 - default)
