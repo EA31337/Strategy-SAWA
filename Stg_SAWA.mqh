@@ -8,7 +8,7 @@
 
 // User input params.
 INPUT float SAWA_LotSize = 0;               // Lot size
-INPUT int SAWA_Shift = 0;                   // Shift (relative to the current bar, 0 - default)
+INPUT short SAWA_Shift = 0;                 // Shift (relative to the current bar, 0 - default)
 INPUT int SAWA_SignalOpenMethod = 0;        // Signal open method
 INPUT int SAWA_SignalOpenFilterMethod = 1;  // Signal open filter method
 INPUT float SAWA_SignalOpenLevel = 0.0f;    // Signal open level
