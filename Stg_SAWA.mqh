@@ -94,7 +94,7 @@ class Stg_SAWA : public Strategy {
    * Check strategy's opening signal.
    */
   bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method = 0, float _level = 0.0f, int _shift = 0) {
-    Indicator *_indi = Data();
+    Indicator *_indi = GetIndicator();
     bool _is_valid = _indi[_shift].IsValid();
     bool _result = _is_valid;
     if (!_result) {
@@ -119,7 +119,7 @@ class Stg_SAWA : public Strategy {
    * Gets price limit value for profit take or stop loss.
    */
   float PriceStop(ENUM_ORDER_TYPE _cmd, ENUM_ORDER_TYPE_VALUE _mode, int _method = 0, float _level = 0.0f) {
-    // Indicator *_indi = Data();
+    // Indicator *_indi = GetIndicator();
     double _trail = _level * Market().GetPipSize();
     // int _bar_count = (int)_level * 10;
     int _direction = Order::OrderDirection(_cmd, _mode);
