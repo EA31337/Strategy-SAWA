@@ -66,7 +66,7 @@ struct Stg_SAWA_Params {
 
 class Stg_SAWA : public Strategy {
  public:
-  Stg_SAWA(StgParams &_params, string _name) : Strategy(_params, _name) {}
+  Stg_SAWA(StgParams &_params, Trade *_trade = NULL, string _name = "") : Strategy(_params, _trade, _name) {}
 
   static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL, long _magic_no = NULL, ENUM_LOG_LEVEL _log_level = V_INFO) {
     // Initialize strategy initial values.
@@ -80,12 +80,9 @@ class Stg_SAWA : public Strategy {
 #endif
     // Initialize indicator.
     _stg_params.SetIndicator(new Indi_SAWA(_indi_params));
-    // Initialize strategy parameters.
-    _stg_params.GetLog().SetLevel(_log_level);
-    _stg_params.SetMagicNo(_magic_no);
-    _stg_params.SetTf(_tf, _Symbol);
-    // Initialize strategy instance.
-    Strategy *_strat = new Stg_SAWA(_stg_params, "SAWA");
+    // Initialize Strategy instance.
+    TradeParams _tparams(_magic_no, _log_level);
+    Strategy *_strat = new Stg_SAWA(_stg_params, new Trade(new Chart(_tf, _Symbol)), "SAWA");
     _stg_params.SetStops(_strat, _strat);
     return _strat;
   }
