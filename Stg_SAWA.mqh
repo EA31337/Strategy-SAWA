@@ -9,13 +9,13 @@
 // User input params.
 INPUT float SAWA_LotSize = 0;               // Lot size
 INPUT short SAWA_Shift = 0;                 // Shift (relative to the current bar, 0 - default)
-INPUT int SAWA_SignalOpenMethod = 0;        // Signal open method
-INPUT int SAWA_SignalOpenFilterMethod = 1;  // Signal open filter method
+INPUT int SAWA_SignalOpenMethod = 2;        // Signal open method
+INPUT int SAWA_SignalOpenFilterMethod = 32;  // Signal open filter method
 INPUT float SAWA_SignalOpenLevel = 0.0f;    // Signal open level
 INPUT int SAWA_SignalOpenBoostMethod = 0;   // Signal open boost method
-INPUT int SAWA_SignalCloseMethod = 0;       // Signal close method
+INPUT int SAWA_SignalCloseMethod = 2;       // Signal close method
 INPUT float SAWA_SignalCloseLevel = 0.0f;   // Signal close level
-INPUT int SAWA_PriceStopMethod = 0;         // Price limit method
+INPUT int SAWA_PriceStopMethod = 1;         // Price limit method
 INPUT float SAWA_PriceStopLevel = 2;        // Price limit level
 INPUT int SAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
 INPUT float SAWA_MaxSpread = 4.0;           // Max spread to trade (in pips)
@@ -112,24 +112,5 @@ class Stg_SAWA : public Strategy {
         break;
     }
     return _result;
-  }
-
-  /**
-   * Gets price limit value for profit take or stop loss.
-   */
-  float PriceStop(ENUM_ORDER_TYPE _cmd, ENUM_ORDER_TYPE_VALUE _mode, int _method = 0, float _level = 0.0f) {
-    // Indicator *_indi = GetIndicator();
-    double _trail = _level * Market().GetPipSize();
-    // int _bar_count = (int)_level * 10;
-    int _direction = Order::OrderDirection(_cmd, _mode);
-    double _default_value = Market().GetCloseOffer(_cmd) + _trail * _method * _direction;
-    double _result = _default_value;
-    // ENUM_APPLIED_PRICE _ap = _direction > 0 ? PRICE_HIGH : PRICE_LOW;
-    switch (_method) {
-      case 1:
-        // Trailing stop here.
-        break;
-    }
-    return (float)_result;
   }
 };
