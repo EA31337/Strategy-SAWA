@@ -101,14 +101,17 @@ class Stg_SAWA : public Strategy {
       return false;
     }
     double _value = _indi[_shift][0];
+    IndicatorSignal _signals = _indi.GetSignals(4, _shift);
     switch (_cmd) {
       case ORDER_TYPE_BUY:
         // Buy signal.
         _result = _indi[_shift][0] < _indi[_shift + 1][0];
+        _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         break;
       case ORDER_TYPE_SELL:
         // Sell signal.
         _result = _indi[_shift][0] < _indi[_shift + 1][0];
+        _result &= _method > 0 ? _signals.CheckSignals(_method) : _signals.CheckSignalsAll(-_method);
         break;
     }
     return _result;
