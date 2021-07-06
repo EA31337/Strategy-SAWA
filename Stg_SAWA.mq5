@@ -35,6 +35,15 @@ input bool Info_On_Chart = true;          // Display info on chart.
 #endif
 #property link ea_link
 
+// Load external resources.
+#ifdef __resource__
+#ifdef __MQL5__
+#import "::Indicators/SAWA.ex5"
+#import
+#resource "Indicators/SAWA.ex5"
+#endif
+#endif
+
 // Class variables.
 EA *ea;
 

@@ -29,7 +29,11 @@ struct Indi_SAWA_Params : public IndicatorParams {
   void Indi_SAWA_Params(int _cci_period, int _rsi_period, int _ma_period, int _koef, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
     max_modes = 3;
+#ifdef __resource__
+    custom_indi_name = "Indicators/SAWA";
+#else
     custom_indi_name = "SAWA";
+#endif
     shift = _shift;
     SetDataSourceType(IDATA_ICUSTOM);
     SetDataValueType(TYPE_DOUBLE);

@@ -7,19 +7,19 @@
 #include "Indi_SAWA.mqh"
 
 // User input params.
-INPUT float SAWA_LotSize = 0;               // Lot size
-INPUT short SAWA_Shift = 0;                 // Shift (relative to the current bar, 0 - default)
-INPUT int SAWA_SignalOpenMethod = 2;        // Signal open method
+INPUT float SAWA_LotSize = 0;                // Lot size
+INPUT short SAWA_Shift = 0;                  // Shift (relative to the current bar, 0 - default)
+INPUT int SAWA_SignalOpenMethod = 2;         // Signal open method
 INPUT int SAWA_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT float SAWA_SignalOpenLevel = 0.0f;    // Signal open level
-INPUT int SAWA_SignalOpenBoostMethod = 0;   // Signal open boost method
-INPUT int SAWA_SignalCloseMethod = 2;       // Signal close method
-INPUT float SAWA_SignalCloseLevel = 0.0f;   // Signal close level
-INPUT int SAWA_PriceStopMethod = 1;         // Price limit method
-INPUT float SAWA_PriceStopLevel = 2;        // Price limit level
-INPUT int SAWA_TickFilterMethod = 1;        // Tick filter method (0-255)
-INPUT float SAWA_MaxSpread = 4.0;           // Max spread to trade (in pips)
-INPUT int SAWA_OrderCloseTime = -20;        // Order close time in mins (>0) or bars (<0)
+INPUT float SAWA_SignalOpenLevel = 0.0f;     // Signal open level
+INPUT int SAWA_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT int SAWA_SignalCloseMethod = 2;        // Signal close method
+INPUT float SAWA_SignalCloseLevel = 0.0f;    // Signal close level
+INPUT int SAWA_PriceStopMethod = 1;          // Price limit method
+INPUT float SAWA_PriceStopLevel = 2;         // Price limit level
+INPUT int SAWA_TickFilterMethod = 1;         // Tick filter method (0-255)
+INPUT float SAWA_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT int SAWA_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
 INPUT string __SAWA_Indi_SAWA_Params__ =
     "-- SAWA strategy: SAWA indicator params --";  // >>> SAWA strategy: SAWA indicator <<<
 INPUT int SAWA_Indi_SAWA_CCIPeriod = 14;           // CCI period
