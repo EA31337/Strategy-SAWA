@@ -21,6 +21,8 @@ INPUT int SAWA_PriceStopMethod = 1;          // Price limit method
 INPUT float SAWA_PriceStopLevel = 2;         // Price limit level
 INPUT int SAWA_TickFilterMethod = 1;         // Tick filter method (0-255)
 INPUT float SAWA_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT float SAWA_OrderCloseLoss = 0;         // Order close loss
+INPUT float SAWA_OrderCloseProfit = 0;       // Order close profit
 INPUT int SAWA_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("SAWA strategy: SAWA indicator params");
 INPUT int SAWA_Indi_SAWA_CCIPeriod = 14;  // CCI period
@@ -45,7 +47,11 @@ struct Stg_SAWA_Params_Defaults : StgParams {
       : StgParams(::SAWA_SignalOpenMethod, ::SAWA_SignalOpenFilterMethod, ::SAWA_SignalOpenLevel,
                   ::SAWA_SignalOpenBoostMethod, ::SAWA_SignalCloseMethod, ::SAWA_SignalCloseFilter,
                   ::SAWA_SignalCloseLevel, ::SAWA_PriceStopMethod, ::SAWA_PriceStopLevel, ::SAWA_TickFilterMethod,
-                  ::SAWA_MaxSpread, ::SAWA_Shift, ::SAWA_OrderCloseTime) {}
+                  ::SAWA_MaxSpread, ::SAWA_Shift) {
+    Set(STRAT_PARAM_OCL, SAWA_OrderCloseLoss);
+    Set(STRAT_PARAM_OCP, SAWA_OrderCloseProfit);
+    Set(STRAT_PARAM_OCT, SAWA_OrderCloseTime);
+  }
 } stg_sawa_defaults;
 
 // Defines struct to store indicator and strategy: strategy params.
