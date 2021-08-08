@@ -71,7 +71,7 @@ int OnInit() {
  */
 void OnTick() {
   ea.ProcessTick();
-  if (!ea.Terminal().IsOptimization()) {
+  if (!ea.GetTerminal().IsOptimization()) {
     ea.Log().Flush(2);
     ea.UpdateInfoOnChart();
   }

@@ -94,8 +94,7 @@ class Stg_SAWA : public Strategy {
    */
   bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method = 0, float _level = 0.0f, int _shift = 0) {
     Indicator *_indi = GetIndicator();
-    bool _is_valid = _indi[_shift].IsValid();
-    bool _result = _is_valid;
+    bool _result = _indi.GetFlag(INDI_ENTRY_FLAG_IS_VALID);
     if (!_result) {
       // Returns false when indicator data is not valid.
       return false;
