@@ -15,6 +15,7 @@ INPUT int SAWA_SignalOpenFilterMethod = 32;  // Signal open filter method
 INPUT float SAWA_SignalOpenLevel = 0.0f;     // Signal open level
 INPUT int SAWA_SignalOpenBoostMethod = 0;    // Signal open boost method
 INPUT int SAWA_SignalCloseMethod = 2;        // Signal close method
+INPUT int SAWA_SignalCloseFilter = 0;        // Signal close filter (-127-127)
 INPUT float SAWA_SignalCloseLevel = 0.0f;    // Signal close level
 INPUT int SAWA_PriceStopMethod = 1;          // Price limit method
 INPUT float SAWA_PriceStopLevel = 2;         // Price limit level
@@ -42,9 +43,9 @@ struct Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
 struct Stg_SAWA_Params_Defaults : StgParams {
   Stg_SAWA_Params_Defaults()
       : StgParams(::SAWA_SignalOpenMethod, ::SAWA_SignalOpenFilterMethod, ::SAWA_SignalOpenLevel,
-                  ::SAWA_SignalOpenBoostMethod, ::SAWA_SignalCloseMethod, ::SAWA_SignalCloseLevel,
-                  ::SAWA_PriceStopMethod, ::SAWA_PriceStopLevel, ::SAWA_TickFilterMethod, ::SAWA_MaxSpread,
-                  ::SAWA_Shift, ::SAWA_OrderCloseTime) {}
+                  ::SAWA_SignalOpenBoostMethod, ::SAWA_SignalCloseMethod, ::SAWA_SignalCloseFilter,
+                  ::SAWA_SignalCloseLevel, ::SAWA_PriceStopMethod, ::SAWA_PriceStopLevel, ::SAWA_TickFilterMethod,
+                  ::SAWA_MaxSpread, ::SAWA_Shift, ::SAWA_OrderCloseTime) {}
 } stg_sawa_defaults;
 
 // Defines struct to store indicator and strategy: strategy params.
