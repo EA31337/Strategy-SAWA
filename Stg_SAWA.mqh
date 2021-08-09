@@ -12,6 +12,7 @@ INPUT float SAWA_LotSize = 0;                // Lot size
 INPUT short SAWA_Shift = 0;                  // Shift (relative to the current bar, 0 - default)
 INPUT int SAWA_SignalOpenMethod = 2;         // Signal open method
 INPUT int SAWA_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT int SAWA_SignalOpenFilterTime = 6;     // Signal open filter time
 INPUT float SAWA_SignalOpenLevel = 0.0f;     // Signal open level
 INPUT int SAWA_SignalOpenBoostMethod = 0;    // Signal open boost method
 INPUT int SAWA_SignalCloseMethod = 2;        // Signal close method
@@ -51,6 +52,7 @@ struct Stg_SAWA_Params_Defaults : StgParams {
     Set(STRAT_PARAM_OCL, SAWA_OrderCloseLoss);
     Set(STRAT_PARAM_OCP, SAWA_OrderCloseProfit);
     Set(STRAT_PARAM_OCT, SAWA_OrderCloseTime);
+    Set(STRAT_PARAM_SOFT, SAWA_SignalOpenFilterTime);
   }
 } stg_sawa_defaults;
 
