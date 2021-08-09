@@ -19,7 +19,7 @@ struct Stg_SAWA_Params_{{ Timeframe }} : StgParams {
   Stg_SAWA_Params_{{ Timeframe }}() : StgParams(stg_force_defaults) {
     lot_size = {{ SAWA_LotSize | default(0) }};
     signal_open_method = {{ SAWA_SignalOpenMethod | default(0) }};
-    signal_open_filter = {{ SAWA_SignalOpenFilterMethod | default(1) }};
+    signal_open_filter_method = {{ SAWA_SignalOpenFilterMethod | default(1) }};
     signal_open_level = (float){{ SAWA_SignalOpenLevel | default(0) }};
     signal_open_boost = {{ SAWA_SignalOpenBoostMethod | default(0) }};
     signal_close_method = {{ SAWA_SignalCloseMethod | default(0) }};
