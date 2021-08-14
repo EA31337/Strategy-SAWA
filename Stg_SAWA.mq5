@@ -38,8 +38,6 @@ input bool Info_On_Chart = true;          // Display info on chart.
 // Load external resources.
 #ifdef __resource__
 #ifdef __MQL5__
-#import "::Indicators/SAWA.ex5"
-#import
 #resource "Indicators/SAWA.ex5"
 #endif
 #endif

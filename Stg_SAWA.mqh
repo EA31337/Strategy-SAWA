@@ -10,12 +10,12 @@
 INPUT_GROUP("SAWA strategy: strategy params");
 INPUT float SAWA_LotSize = 0;                // Lot size
 INPUT short SAWA_Shift = 0;                  // Shift (relative to the current bar, 0 - default)
-INPUT int SAWA_SignalOpenMethod = 2;         // Signal open method
+INPUT int SAWA_SignalOpenMethod = 0;         // Signal open method
 INPUT int SAWA_SignalOpenFilterMethod = 32;  // Signal open filter method
 INPUT int SAWA_SignalOpenFilterTime = 6;     // Signal open filter time
 INPUT float SAWA_SignalOpenLevel = 0.0f;     // Signal open level
 INPUT int SAWA_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT int SAWA_SignalCloseMethod = 2;        // Signal close method
+INPUT int SAWA_SignalCloseMethod = 0;        // Signal close method
 INPUT int SAWA_SignalCloseFilter = 0;        // Signal close filter (-127-127)
 INPUT float SAWA_SignalCloseLevel = 0.0f;    // Signal close level
 INPUT int SAWA_PriceStopMethod = 1;          // Price limit method
@@ -24,7 +24,7 @@ INPUT int SAWA_TickFilterMethod = 1;         // Tick filter method (0-255)
 INPUT float SAWA_MaxSpread = 4.0;            // Max spread to trade (in pips)
 INPUT float SAWA_OrderCloseLoss = 0;         // Order close loss
 INPUT float SAWA_OrderCloseProfit = 0;       // Order close profit
-INPUT int SAWA_OrderCloseTime = -20;         // Order close time in mins (>0) or bars (<0)
+INPUT int SAWA_OrderCloseTime = -30;         // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("SAWA strategy: SAWA indicator params");
 INPUT int SAWA_Indi_SAWA_CCIPeriod = 14;  // CCI period
 INPUT int SAWA_Indi_SAWA_RSIPeriod = 14;  // RSI period

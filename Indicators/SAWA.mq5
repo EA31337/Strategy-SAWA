@@ -22,16 +22,20 @@
 // Defines macros.
 #define Bars (ChartStatic::iBars(_Symbol, _Period))
 
+// Includes the main file.
+#include "SAWA.mq4"
+
+// Custom indicator initialization function.
+void OnInit() {
+  init();
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, CCI_per);
+  PlotIndexSetInteger(1, PLOT_DRAW_BEGIN, CCI_per);
+}
+
 // Custom indicator iteration function.
 int OnCalculate(const int rates_total, const int prev_calculated, const int begin, const double &price[]) {
-  // if (begin > 0) PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, begin + SvePeriod);
-  // if (begin > 0) PlotIndexSetInteger(1, PLOT_DRAW_BEGIN, begin + SvePeriod);
-  // if (begin > 0) PlotIndexSetInteger(2, PLOT_DRAW_BEGIN, begin + SvePeriod);
   int pos = fmax(0, prev_calculated - 1);
   IndicatorCounted(prev_calculated);
   start();
   return (rates_total);
 }
-
-// Includes the main file.
-#include "SAWA.mq4"
