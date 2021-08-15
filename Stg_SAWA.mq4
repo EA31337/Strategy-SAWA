@@ -8,7 +8,5 @@
 
 // Load external resources.
 #ifdef __resource__
-#ifdef __MQL5__
-#resource "Indicators/SAWA.ex4"
-#endif
+#resource "\\Indicators\SAWA.ex4"
 #endif

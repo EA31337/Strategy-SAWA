@@ -30,6 +30,12 @@ void OnInit() {
   init();
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, CCI_per);
   PlotIndexSetInteger(1, PLOT_DRAW_BEGIN, CCI_per);
+  if (!ArrayGetAsSeries(ExtMapBuffer1)) {
+    ArraySetAsSeries(ExtMapBuffer1, true);
+    ArraySetAsSeries(ExtMapBuffer2, true);
+    ArraySetAsSeries(ExtMapBuffer3, true);
+    ArraySetAsSeries(ExtMapBuffer4, true);
+  }
 }
 
 // Custom indicator iteration function.
