@@ -8,5 +8,5 @@
 
 // Load external resources.
 #ifdef __resource__
-#resource "\\Indicators\SAWA.ex4"
+#resource "Indicators\\SAWA.ex4"
 #endif
