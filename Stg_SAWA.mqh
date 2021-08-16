@@ -35,13 +35,6 @@ INPUT int SAWA_Indi_SAWA_Shift = 0;       // Shift
 
 // Structs.
 
-// Defines struct with default user indicator values.
-struct Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
-  Indi_SAWA_Params_Defaults()
-      : Indi_SAWA_Params(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
-                         ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
-} indi_sawa_defaults;
-
 // Defines struct with default user strategy values.
 struct Stg_SAWA_Params_Defaults : StgParams {
   Stg_SAWA_Params_Defaults()
@@ -55,6 +48,13 @@ struct Stg_SAWA_Params_Defaults : StgParams {
     Set(STRAT_PARAM_SOFT, SAWA_SignalOpenFilterTime);
   }
 } stg_sawa_defaults;
+
+// Defines struct with default user indicator values.
+struct Stg_SAWA_Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
+  Stg_SAWA_Indi_SAWA_Params_Defaults()
+      : Indi_SAWA_Params(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
+                         ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
+} stg_sawa_indi_sawa_defaults;
 
 // Defines struct to store indicator and strategy: strategy params.
 struct Stg_SAWA_Params {
@@ -82,7 +82,7 @@ class Stg_SAWA : public Strategy {
 
   static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL, long _magic_no = NULL, ENUM_LOG_LEVEL _log_level = V_INFO) {
     // Initialize strategy initial values.
-    Indi_SAWA_Params _indi_params(indi_sawa_defaults, _tf);
+    Indi_SAWA_Params _indi_params(stg_sawa_indi_sawa_defaults, _tf);
     StgParams _stg_params(stg_sawa_defaults);
 #ifdef __config__
     SetParamsByTf<Indi_SAWA_Params>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
