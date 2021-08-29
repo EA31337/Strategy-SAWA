@@ -42,6 +42,7 @@ struct Stg_SAWA_Params_Defaults : StgParams {
                   ::SAWA_SignalOpenBoostMethod, ::SAWA_SignalCloseMethod, ::SAWA_SignalCloseFilter,
                   ::SAWA_SignalCloseLevel, ::SAWA_PriceStopMethod, ::SAWA_PriceStopLevel, ::SAWA_TickFilterMethod,
                   ::SAWA_MaxSpread, ::SAWA_Shift) {
+    Set(STRAT_PARAM_LS, SAWA_LotSize);
     Set(STRAT_PARAM_OCL, SAWA_OrderCloseLoss);
     Set(STRAT_PARAM_OCP, SAWA_OrderCloseProfit);
     Set(STRAT_PARAM_OCT, SAWA_OrderCloseTime);
