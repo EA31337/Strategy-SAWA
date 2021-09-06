@@ -22,8 +22,8 @@ INPUT int SAWA_PriceStopMethod = 1;          // Price limit method
 INPUT float SAWA_PriceStopLevel = 2;         // Price limit level
 INPUT int SAWA_TickFilterMethod = 32;        // Tick filter method (0-255)
 INPUT float SAWA_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT float SAWA_OrderCloseLoss = 0;         // Order close loss
-INPUT float SAWA_OrderCloseProfit = 0;       // Order close profit
+INPUT float SAWA_OrderCloseLoss = 80;        // Order close loss
+INPUT float SAWA_OrderCloseProfit = 80;      // Order close profit
 INPUT int SAWA_OrderCloseTime = -30;         // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("SAWA strategy: SAWA indicator params");
 INPUT int SAWA_Indi_SAWA_CCIPeriod = 14;  // CCI period
