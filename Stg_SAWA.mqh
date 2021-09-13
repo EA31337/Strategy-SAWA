@@ -48,7 +48,7 @@ struct Stg_SAWA_Params_Defaults : StgParams {
     Set(STRAT_PARAM_OCT, SAWA_OrderCloseTime);
     Set(STRAT_PARAM_SOFT, SAWA_SignalOpenFilterTime);
   }
-} stg_sawa_defaults;
+};
 
 // Defines struct with default user indicator values.
 struct Stg_SAWA_Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
@@ -57,13 +57,6 @@ struct Stg_SAWA_Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
                          ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
 } stg_sawa_indi_sawa_defaults;
 
-// Defines struct to store indicator and strategy: strategy params.
-struct Stg_SAWA_Params {
-  StgParams sparams;
-
-  // Struct constructors.
-  Stg_SAWA_Params(StgParams &_sparams) : sparams(stg_sawa_defaults) { sparams = _sparams; }
-};
 
 #ifdef __config__
 // Loads pair specific param values.
@@ -84,6 +77,7 @@ class Stg_SAWA : public Strategy {
   static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
     Indi_SAWA_Params _indi_params(stg_sawa_indi_sawa_defaults, _tf);
+    Stg_SAWA_Params_Defaults stg_sawa_defaults;
     StgParams _stg_params(stg_sawa_defaults);
 #ifdef __config__
     SetParamsByTf<Indi_SAWA_Params>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
