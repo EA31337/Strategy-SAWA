@@ -57,7 +57,6 @@ struct Stg_SAWA_Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
                          ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
 } stg_sawa_indi_sawa_defaults;
 
-
 #ifdef __config__
 // Loads pair specific param values.
 #include "config/H1.h"
