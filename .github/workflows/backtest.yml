@@ -32,6 +32,7 @@ jobs:
       - name: Compile required indicator for MQL4
         uses: fx31337/mql-compile-action@master
         with:
+          ignore-warnings: true
           include: .
           init-platform: true
           mt-version: 5.0.0.2361
@@ -40,6 +41,7 @@ jobs:
       - name: Compile required indicator for MQL5
         uses: fx31337/mql-compile-action@master
         with:
+          ignore-warnings: true
           include: .
           init-platform: true
           mt-version: 5.0.0.2515
