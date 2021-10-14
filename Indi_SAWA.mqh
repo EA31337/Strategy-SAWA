@@ -26,7 +26,7 @@ struct Indi_SAWA_Params : public IndicatorParams {
   // Indicator params.
   int cci_period, rsi_period, ma_period, koef;
   // Struct constructors.
-  void Indi_SAWA_Params(int _cci_period, int _rsi_period, int _ma_period, int _koef, int _shift = 0)
+  void Indi_SAWA_Params(int _cci_period = 14, int _rsi_period = 14, int _ma_period = 2, int _koef = 8, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
     max_modes = 3;
 #ifdef __resource__
@@ -59,22 +59,13 @@ struct Indi_SAWA_Params : public IndicatorParams {
 /**
  * Implements indicator class.
  */
-class Indi_SAWA : public Indicator {
+class Indi_SAWA : public Indicator<Indi_SAWA_Params> {
  public:
-  // Structs.
-  Indi_SAWA_Params params;
-
   /**
    * Class constructor.
    */
-  Indi_SAWA(Indi_SAWA_Params &_p)
-      : params(_p.cci_period, _p.rsi_period, _p.ma_period, _p.koef, _p.shift), Indicator((IndicatorParams)_p) {
-    params = _p;
-  }
-  Indi_SAWA(Indi_SAWA_Params &_p, ENUM_TIMEFRAMES _tf)
-      : params(_p.cci_period, _p.rsi_period, _p.ma_period, _p.koef, _p.shift), Indicator(NULL, _tf) {
-    params = _p;
-  }
+  Indi_SAWA(Indi_SAWA_Params &_p, IndicatorBase *_indi_src = NULL) : Indicator<Indi_SAWA_Params>(_p, _indi_src) {}
+  Indi_SAWA(ENUM_TIMEFRAMES _tf = PERIOD_CURRENT) : Indicator(INDI_CUSTOM, _tf){};
 
   /**
    * Gets indicator's params.
@@ -88,11 +79,12 @@ class Indi_SAWA : public Indicator {
   double GetValue(int _mode, int _shift = 0) {
     ResetLastError();
     double _value = EMPTY_VALUE;
-    switch (params.idstype) {
+    switch (iparams.idstype) {
       case IDATA_ICUSTOM:
-        _value = iCustom(istate.handle, Get<string>(CHART_PARAM_SYMBOL), Get<ENUM_TIMEFRAMES>(CHART_PARAM_TF),
-                         params.custom_indi_name, params.GetCCIPeriod(), params.GetRSIPeriod(), params.GetMAPeriod(),
-                         params.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode, params.GetShift() + _shift);
+        _value =
+            iCustom(istate.handle, Get<string>(CHART_PARAM_SYMBOL), Get<ENUM_TIMEFRAMES>(CHART_PARAM_TF),
+                    iparams.custom_indi_name, iparams.GetCCIPeriod(), iparams.GetRSIPeriod(), iparams.GetMAPeriod(),
+                    iparams.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode, iparams.GetShift() + _shift);
         break;
       default:
         SetUserError(ERR_USER_NOT_SUPPORTED);
@@ -101,26 +93,5 @@ class Indi_SAWA : public Indicator {
     istate.is_changed = false;
     istate.is_ready = _LastError == ERR_NO_ERROR;
     return _value;
-  }
-
-  /**
-   * Returns the indicator's struct value.
-   */
-  IndicatorDataEntry GetEntry(int _shift = 0) {
-    long _bar_time = GetBarTime(_shift);
-    unsigned int _position;
-    IndicatorDataEntry _entry(params.max_modes);
-    if (idata.KeyExists(_bar_time, _position)) {
-      _entry = idata.GetByPos(_position);
-    } else {
-      _entry.timestamp = GetBarTime(_shift);
-      for (int _mode = 0; _mode < (int)params.max_modes; _mode++) {
-        _entry.values[_mode] = GetValue(_mode, _shift);
-      }
-      if (_entry.IsValid()) {
-        idata.Add(_entry, _bar_time);
-      }
-    }
-    return _entry;
   }
 };
