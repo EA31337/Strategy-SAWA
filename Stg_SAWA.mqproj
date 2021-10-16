@@ -626,7 +626,7 @@
     {
       "type":"indicator",
       "path":".\\Indicators\\SAWA.ex5",
-      "name":"",
+      "name":"Indicators\\SAWA",
       "relative_to_project":"true"
     }
   ]

@@ -8,4 +8,4 @@
 //#define __config__  // Loads params from the config files.
 //#define __debug__        // Enables debugging.
 #define __input__     // Enables input parameters.
-//#define __resource__  // Enables resources.
+#define __resource__  // Enables resources.
