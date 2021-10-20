@@ -39,8 +39,8 @@ struct Indi_SAWA_Params : public IndicatorParams {
     SetDataValueType(TYPE_DOUBLE);
   };
   void Indi_SAWA_Params(Indi_SAWA_Params &_params, ENUM_TIMEFRAMES _tf) {
-    this = _params;
-    _params.tf = _tf;
+    THIS_REF = _params;
+    tf = _tf;
   }
   // Getters.
   int GetCCIPeriod() { return cci_period; }
