@@ -22,11 +22,11 @@
 // Structs.
 
 // Defines struct to store indicator parameter values.
-struct Indi_SAWA_Params : public IndicatorParams {
+struct IndiSAWAParams : public IndicatorParams {
   // Indicator params.
   int cci_period, rsi_period, ma_period, koef;
   // Struct constructors.
-  void Indi_SAWA_Params(int _cci_period = 14, int _rsi_period = 14, int _ma_period = 2, int _koef = 8, int _shift = 0)
+  void IndiSAWAParams(int _cci_period = 14, int _rsi_period = 14, int _ma_period = 2, int _koef = 8, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
     max_modes = 3;
 #ifdef __resource__
@@ -38,7 +38,7 @@ struct Indi_SAWA_Params : public IndicatorParams {
     SetDataSourceType(IDATA_ICUSTOM);
     SetDataValueType(TYPE_DOUBLE);
   };
-  void Indi_SAWA_Params(Indi_SAWA_Params &_params, ENUM_TIMEFRAMES _tf) {
+  void IndiSAWAParams(IndiSAWAParams &_params, ENUM_TIMEFRAMES _tf) {
     THIS_REF = _params;
     tf = _tf;
   }
@@ -59,18 +59,18 @@ struct Indi_SAWA_Params : public IndicatorParams {
 /**
  * Implements indicator class.
  */
-class Indi_SAWA : public Indicator<Indi_SAWA_Params> {
+class Indi_SAWA : public Indicator<IndiSAWAParams> {
  public:
   /**
    * Class constructor.
    */
-  Indi_SAWA(Indi_SAWA_Params &_p, IndicatorBase *_indi_src = NULL) : Indicator<Indi_SAWA_Params>(_p, _indi_src) {}
+  Indi_SAWA(IndiSAWAParams &_p, IndicatorBase *_indi_src = NULL) : Indicator<IndiSAWAParams>(_p, _indi_src) {}
   Indi_SAWA(ENUM_TIMEFRAMES _tf = PERIOD_CURRENT) : Indicator(INDI_CUSTOM, _tf){};
 
   /**
    * Gets indicator's params.
    */
-  // Indi_SAWA_Params GetIndiParams() const { return params; }
+  // IndiSAWAParams GetIndiParams() const { return params; }
 
   /**
    * Returns the indicator's value.

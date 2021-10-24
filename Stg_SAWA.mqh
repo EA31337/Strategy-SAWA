@@ -51,10 +51,10 @@ struct Stg_SAWA_Params_Defaults : StgParams {
 };
 
 // Defines struct with default user indicator values.
-struct Stg_SAWA_Indi_SAWA_Params_Defaults : Indi_SAWA_Params {
-  Stg_SAWA_Indi_SAWA_Params_Defaults()
-      : Indi_SAWA_Params(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
-                         ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
+struct Stg_SAWA_IndiSAWAParams_Defaults : IndiSAWAParams {
+  Stg_SAWA_IndiSAWAParams_Defaults()
+      : IndiSAWAParams(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
+                       ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
 } stg_sawa_indi_sawa_defaults;
 
 #ifdef __config__
@@ -75,12 +75,12 @@ class Stg_SAWA : public Strategy {
 
   static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
-    Indi_SAWA_Params _indi_params(stg_sawa_indi_sawa_defaults, _tf);
+    IndiSAWAParams _indi_params(stg_sawa_indi_sawa_defaults, _tf);
     Stg_SAWA_Params_Defaults stg_sawa_defaults;
     StgParams _stg_params(stg_sawa_defaults);
 #ifdef __config__
-    SetParamsByTf<Indi_SAWA_Params>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
-                                    indi_sawa_h1, indi_sawa_h4, indi_sawa_h8);
+    SetParamsByTf<IndiSAWAParams>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
+                                  indi_sawa_h1, indi_sawa_h4, indi_sawa_h8);
     SetParamsByTf<StgParams>(_stg_params, _tf, stg_sawa_m1, stg_sawa_m5, stg_sawa_m15, stg_sawa_m30, stg_sawa_h1,
                              stg_sawa_h4, stg_sawa_h8);
 #endif

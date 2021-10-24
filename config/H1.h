@@ -5,8 +5,8 @@
  */
 
 // Defines indicator's parameter values for the given pair symbol and timeframe.
-struct Indi_SAWA_Params_H1 : Indi_SAWA_Params {
-  Indi_SAWA_Params_H1() : Indi_SAWA_Params(indi_sawa_defaults, PERIOD_H1) { shift = 0; }
+struct IndiSAWAParams_H1 : IndiSAWAParams {
+  IndiSAWAParams_H1() : IndiSAWAParams(indi_sawa_defaults, PERIOD_H1) { shift = 0; }
 } indi_sawa_h1;
 
 // Defines strategy's parameter values for the given pair symbol and timeframe.
