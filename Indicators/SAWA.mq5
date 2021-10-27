@@ -21,7 +21,7 @@
 
 // Defines macros.
 #define extern input
-#define Bars (ChartStatic::iBars(_Symbol, _Period))
+#define Bars fmin(10000, (ChartStatic::iBars(_Symbol, _Period)))
 
 // Includes the main file.
 #include "SAWA.mq4"
