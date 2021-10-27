@@ -84,7 +84,7 @@ class Indi_SAWA : public Indicator<IndiSAWAParams> {
         _value =
             iCustom(istate.handle, Get<string>(CHART_PARAM_SYMBOL), Get<ENUM_TIMEFRAMES>(CHART_PARAM_TF),
                     iparams.custom_indi_name, iparams.GetCCIPeriod(), iparams.GetRSIPeriod(), iparams.GetMAPeriod(),
-                    iparams.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode, iparams.GetShift() + _shift);
+                    iparams.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode, _shift);
         break;
       default:
         SetUserError(ERR_USER_NOT_SUPPORTED);
