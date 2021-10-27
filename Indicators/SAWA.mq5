@@ -29,6 +29,7 @@
 // Custom indicator initialization function.
 void OnInit() {
   init();
+  ChartSetSymbolPeriod(0, _Symbol, PERIOD_CURRENT);
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, CCI_per);
   PlotIndexSetInteger(1, PLOT_DRAW_BEGIN, CCI_per);
   if (!ArrayGetAsSeries(ExtMapBuffer1)) {
