@@ -28,7 +28,7 @@ struct IndiSAWAParams : public IndicatorParams {
   // Struct constructors.
   void IndiSAWAParams(int _cci_period = 14, int _rsi_period = 14, int _ma_period = 2, int _koef = 8, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
-    max_modes = 3;
+    max_modes = 2;
 #ifdef __resource__
     custom_indi_name = "::Indicators\\SAWA";
 #else
