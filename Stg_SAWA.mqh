@@ -50,13 +50,6 @@ struct Stg_SAWA_Params_Defaults : StgParams {
   }
 };
 
-// Defines struct with default user indicator values.
-struct Stg_SAWA_IndiSAWAParams_Defaults : IndiSAWAParams {
-  Stg_SAWA_IndiSAWAParams_Defaults()
-      : IndiSAWAParams(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
-                       ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift) {}
-} stg_sawa_indi_sawa_defaults;
-
 #ifdef __config__
 // Loads pair specific param values.
 #include "config/H1.h"
@@ -94,7 +87,9 @@ class Stg_SAWA : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    IndiSAWAParams _indi_params(stg_sawa_indi_sawa_defaults, Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
+    IndiSAWAParams _indi_params(::SAWA_Indi_SAWA_CCIPeriod, ::SAWA_Indi_SAWA_RSIPeriod, ::SAWA_Indi_SAWA_MAPeriod,
+                                ::SAWA_Indi_SAWA_Koef, ::SAWA_Indi_SAWA_Shift);
+    _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
     SetIndicator(new Indi_SAWA(_indi_params));
   }
 
