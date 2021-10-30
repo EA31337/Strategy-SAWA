@@ -75,12 +75,9 @@ class Stg_SAWA : public Strategy {
 
   static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
-    IndiSAWAParams _indi_params(stg_sawa_indi_sawa_defaults, _tf);
     Stg_SAWA_Params_Defaults stg_sawa_defaults;
     StgParams _stg_params(stg_sawa_defaults);
 #ifdef __config__
-    SetParamsByTf<IndiSAWAParams>(_indi_params, _tf, indi_sawa_m1, indi_sawa_m5, indi_sawa_m15, indi_sawa_m30,
-                                  indi_sawa_h1, indi_sawa_h4, indi_sawa_h8);
     SetParamsByTf<StgParams>(_stg_params, _tf, stg_sawa_m1, stg_sawa_m5, stg_sawa_m15, stg_sawa_m30, stg_sawa_h1,
                              stg_sawa_h4, stg_sawa_h8);
 #endif
@@ -89,9 +86,16 @@ class Stg_SAWA : public Strategy {
     ChartParams _cparams(_tf, _Symbol);
     TradeParams _tparams;
     Strategy *_strat = new Stg_SAWA(_stg_params, _tparams, _cparams, "SAWA");
-    _strat.SetIndicator(new Indi_SAWA(_indi_params));
     _stg_params.SetStops(_strat, _strat);
     return _strat;
+  }
+
+  /**
+   * Event on strategy's init.
+   */
+  void OnInit() {
+    IndiSAWAParams _indi_params(stg_sawa_indi_sawa_defaults, Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
+    SetIndicator(new Indi_SAWA(_indi_params));
   }
 
   /**
