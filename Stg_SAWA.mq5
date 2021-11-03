@@ -37,15 +37,15 @@ input bool Info_On_Chart = true;          // Display info on chart.
 #property link ea_link
 #ifdef __resource__
 #ifdef __MQL5__
-#property tester_indicator "::Indicators\\SAWA.ex5"
-#property tester_library "::Indicators\\SAWA.ex5"
+#property tester_indicator "::" + INDI_SAWA_PATH + "\\SAWA.ex5"
+#property tester_library "::" + INDI_SAWA_PATH + "\\SAWA.ex5"
 #endif
 #endif
 
 // Load external resources.
 #ifdef __resource__
 #ifdef __MQL5__
-#resource "Indicators\\SAWA.ex5"
+#resource INDI_SAWA_PATH + "\\SAWA.ex5"
 #endif
 #endif
 

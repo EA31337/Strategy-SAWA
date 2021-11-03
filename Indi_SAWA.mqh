@@ -19,6 +19,9 @@
  *
  */
 
+// Defines
+#define INDI_SAWA_PATH "indicators-other\\Prices"
+
 // Structs.
 
 // Defines struct to store indicator parameter values.
@@ -30,7 +33,7 @@ struct IndiSAWAParams : public IndicatorParams {
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
     max_modes = 2;
 #ifdef __resource__
-    custom_indi_name = "::Indicators\\SAWA";
+    custom_indi_name = "::" + INDI_SAWA_PATH + "\\SAWA";
 #else
     custom_indi_name = "SAWA";
 #endif
