@@ -20,7 +20,7 @@
  */
 
 // Defines
-#define INDI_SAWA_PATH "indicators-other\\Prices"
+#define INDI_SAWA_PATH "indicators-other\\PriceBands"
 
 // Structs.
 
