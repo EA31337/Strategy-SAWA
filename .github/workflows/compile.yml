@@ -67,7 +67,7 @@ jobs:
     strategy:
       matrix:
         file:
-          - indicators-other/Prices/SAWA
+          - indicators-other/PriceBands/SAWA
     steps:
       - uses: actions/checkout@v2
         with:
