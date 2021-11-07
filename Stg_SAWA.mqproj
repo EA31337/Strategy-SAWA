@@ -620,14 +620,4 @@
       "relative_to_project":"true"
     }
   ],
-
-  "resources":
-  [
-    {
-      "type":"indicator",
-      "path":".\\Indicators\\SAWA.ex5",
-      "name":"Indicators\\SAWA.ex5",
-      "relative_to_project":"true"
-    }
-  ]
 }
