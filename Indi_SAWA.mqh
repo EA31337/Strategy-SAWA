@@ -79,9 +79,9 @@ class Indi_SAWA : public Indicator<IndiSAWAParams> {
    * Returns the indicator's value.
    *
    */
-  double GetValue(int _mode, int _shift = 0) {
-    ResetLastError();
+  IndicatorDataEntryValue GetEntryValue(int _mode, int _shift = 1) {
     double _value = EMPTY_VALUE;
+    int _ishift = _shift >= 0 ? _shift : iparams.GetShift();
     switch (iparams.idstype) {
       case IDATA_ICUSTOM:
         _value = iCustom(istate.handle, Get<string>(CHART_PARAM_SYMBOL), Get<ENUM_TIMEFRAMES>(CHART_PARAM_TF),
@@ -91,9 +91,8 @@ class Indi_SAWA : public Indicator<IndiSAWAParams> {
       default:
         SetUserError(ERR_USER_NOT_SUPPORTED);
         _value = EMPTY_VALUE;
+        break;
     }
-    istate.is_changed = false;
-    istate.is_ready = _LastError == ERR_NO_ERROR;
     return _value;
   }
 };
