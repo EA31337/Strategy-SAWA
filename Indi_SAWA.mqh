@@ -31,15 +31,12 @@ struct IndiSAWAParams : public IndicatorParams {
   // Struct constructors.
   void IndiSAWAParams(int _cci_period = 14, int _rsi_period = 14, int _ma_period = 2, int _koef = 8, int _shift = 0)
       : cci_period(_cci_period), rsi_period(_rsi_period), ma_period(_ma_period), koef(_koef) {
-    max_modes = 2;
 #ifdef __resource__
     custom_indi_name = "::" + INDI_SAWA_PATH + "\\SAWA";
 #else
     custom_indi_name = "SAWA";
 #endif
     shift = _shift;
-    SetDataSourceType(IDATA_ICUSTOM);
-    SetDataValueType(TYPE_DOUBLE);
   };
   void IndiSAWAParams(IndiSAWAParams &_params, ENUM_TIMEFRAMES _tf) {
     THIS_REF = _params;
@@ -67,7 +64,10 @@ class Indi_SAWA : public Indicator<IndiSAWAParams> {
   /**
    * Class constructor.
    */
-  Indi_SAWA(IndiSAWAParams &_p, IndicatorBase *_indi_src = NULL) : Indicator<IndiSAWAParams>(_p, _indi_src) {}
+  Indi_SAWA(IndiSAWAParams &_p, ENUM_IDATA_SOURCE_TYPE _idstype = IDATA_ICUSTOM, IndicatorBase *_indi_src = NULL,
+            int _indi_src_mode = 0)
+      : Indicator<IndiSAWAParams>(_p, IndicatorDataParams::GetInstance(2, TYPE_DOUBLE, _idstype, IDATA_RANGE_MIXED),
+                                  _indi_src) {}
   Indi_SAWA(ENUM_TIMEFRAMES _tf = PERIOD_CURRENT) : Indicator(INDI_CUSTOM, _tf){};
 
   /**
@@ -82,11 +82,11 @@ class Indi_SAWA : public Indicator<IndiSAWAParams> {
   IndicatorDataEntryValue GetEntryValue(int _mode, int _shift = 1) {
     double _value = EMPTY_VALUE;
     int _ishift = _shift >= 0 ? _shift : iparams.GetShift();
-    switch (iparams.idstype) {
+    switch (Get<ENUM_IDATA_SOURCE_TYPE>(STRUCT_ENUM(IndicatorDataParams, IDATA_PARAM_IDSTYPE))) {
       case IDATA_ICUSTOM:
-        _value = iCustom(istate.handle, Get<string>(CHART_PARAM_SYMBOL), Get<ENUM_TIMEFRAMES>(CHART_PARAM_TF),
-                         iparams.custom_indi_name, iparams.GetCCIPeriod(), iparams.GetRSIPeriod(),
-                         iparams.GetMAPeriod(), iparams.GetKoef(), ::SAWA_Indi_SAWA_Arrows, _mode, _shift);
+        _value = iCustom(istate.handle, GetSymbol(), GetTf(), iparams.custom_indi_name, iparams.GetCCIPeriod(),
+                         iparams.GetRSIPeriod(), iparams.GetMAPeriod(), iparams.GetKoef(), ::SAWA_Indi_SAWA_Arrows,
+                         _mode, _shift);
         break;
       default:
         SetUserError(ERR_USER_NOT_SUPPORTED);
