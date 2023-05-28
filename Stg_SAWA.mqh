@@ -66,7 +66,7 @@ class Stg_SAWA : public Strategy {
   Stg_SAWA(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
       : Strategy(_sparams, _tparams, _cparams, _name) {}
 
-  static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL) {
+  static Stg_SAWA *Init(ENUM_TIMEFRAMES _tf = NULL, EA* _ea = NULL) {
     // Initialize strategy initial values.
     Stg_SAWA_Params_Defaults stg_sawa_defaults;
     StgParams _stg_params(stg_sawa_defaults);
