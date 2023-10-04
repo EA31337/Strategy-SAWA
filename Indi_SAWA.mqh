@@ -21,7 +21,7 @@
 
 // Defines
 #ifndef INDI_SAWA_PATH
-#define INDI_SAWA_PATH "indicators-other\\PriceBands\\SAWA"
+#define INDI_SAWA_PATH "indicators-other\\PriceBands"
 #endif
 
 // Structs.
