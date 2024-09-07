@@ -1,10 +1,6 @@
 ---
 name: Compile
 
-# Setting an environment variable with the value of a configuration variable.
-env:
-  INDI_OTHER_WORKDIR: ${{ vars.INDI_OTHER_WORKDIR || 'indicators-other' }}
-
 # yamllint disable-line rule:truthy
 on:
   pull_request:
@@ -38,13 +34,6 @@ jobs:
           name: src-classes
           path: .
 
-  compile-indicators-other:
-    name: Compile Indicators (Other)
-    uses: EA31337/EA31337-Indicators-Other/.github/workflows/compile.yml@master
-    with:
-      artifact_prefix: io-mt
-      checkout_branch: v1.000
-
   mt4:
     name: Installs platform (4)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
@@ -68,7 +57,7 @@ jobs:
       run:
         shell: powershell
     name: Compile
-    needs: [checkout-classes, compile-indicators-other, mt4, mt5]
+    needs: [checkout-classes, mt4, mt5]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,10 +72,6 @@ jobs:
           pattern: .mt?
       - name: Enables input mode
         run: echo '#define __input__' > config/define.h
-      - uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
-          pattern: "*-indicators-ex${{ matrix.version }}"
       - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
